@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Bitcoin Price omg</title>
+  
+  <style>
+  html, body {
+  height: 100%;
+  width: 100%;
+  background: #000;
+  color: #fff;
+}
+
+#price {
+  font-size: 100px;
+  color: green;
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: underline green;
+}
+
+#frame {
+  width: 95%;
+  height: 95%;
+  padding-left: 25px;
+  text-align: center;
+  border: 3px solid #000;
+  background: #1f3641;
+}
+#header {
+  font: 30px Arial, sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  padding: -20px;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+input {
+  display: inline-block;
+  float: left;
+}</style>
+</head>
+<body>
+<div>
+  <div id="header"><h4>Price of BTC on Kraken:</h4></div>
+  <div id="frame"><a href="" id="price"></a></div>
+</div>
+  <script>
+const SATS = 0.00000001
+const FULL_BTC = 100000000
+const Http = new XMLHttpRequest();
+const url='https://api.kraken.com/0/public/Ticker?pair=xbtusd';
+Http.open("GET", url);
+Http.send();
+
+Http.onreadystatechange = (e) => {
+  var arr = JSON.parse(Http.responseText);
+  var arr = arr.result.XXBTZUSD.c[0];
+  var arr = Math.round(arr);
+  tx1 = "$";
+  arr = tx1.concat(arr);
+  document.getElementById("price").innerHTML = arr;
+};
+  </script>
+  <script src="https://replit.com/public/js/replit-badge.js" theme="dark" defer></script> 
+</body>
+
+</html>
